@@ -38,4 +38,13 @@ public class OrderService {
         orderDao.insertMiaoshaorder(miaoshaOrder);
         return order;
     }
+
+    public order_info getOrderById(long orderId) {
+        return orderDao.getOrderById(orderId);
+    }
+
+    public void deleteOrders() {
+        orderDao.deleteOrders();
+        orderDao.deleteMiaoshaOrders();
+    }
 }

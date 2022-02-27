@@ -1,6 +1,7 @@
 package com.yyy.seckill.controller;
 
 import com.yyy.seckill.pojo.test;
+import com.yyy.seckill.rabbitmq.MQsender;
 import com.yyy.seckill.redis.RedisService;
 import com.yyy.seckill.redis.UserKey;
 import com.yyy.seckill.result.CodeMsg;
@@ -65,5 +66,19 @@ public class DemoController {
         t.setName("kate");
         boolean r = redisService.Set(UserKey.GetByID,""+1, t);
         return Result.Success(true);
+    }
+    @Autowired
+    MQsender mQsender;
+    @RequestMapping("/mq")
+    @ResponseBody
+    public Result<String> mq(Model model){
+        mQsender.send("hello");
+        return Result.Success("hello");
+    }
+    @RequestMapping("/mq/topic")
+    @ResponseBody
+    public Result<String> mqtopic(Model model){
+        mQsender.sendTopic("hello");
+        return Result.Success("hello");
     }
 }

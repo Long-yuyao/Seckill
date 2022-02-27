@@ -184,7 +184,7 @@ function render(detail){
 	$("#remainSeconds").val(remainSeconds);
 	$("#goodsId").val(goods.id);
 	$("#goodsPrice").text(goods.goodsPrice);
-	$("#miaoshaPrice").text(goods.miaoshaPrice);
+	$("#miaoshaPrice").text(goods.miaosha_price);
 	$("#stockCount").text(goods.stockCount);
 	countDown();
 }
@@ -197,7 +197,7 @@ $(function(){
 function getDetail(){
 	var goodsId = g_getQueryString("goodsId");
 	$.ajax({
-		url:"/goods/detail/"+goodsId,
+		url:"/goods/to_detail2/"+goodsId,
 		type:"GET",
 		success:function(data){
 			if(data.code == 0){

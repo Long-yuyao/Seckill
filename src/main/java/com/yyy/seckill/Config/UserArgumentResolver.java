@@ -1,7 +1,10 @@
 package com.yyy.seckill.Config;
 
+import com.yyy.seckill.controller.LoginController;
 import com.yyy.seckill.pojo.seckill_user;
 import com.yyy.seckill.service.SeckillUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -16,7 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Service
-public class UserArgumentResolve implements HandlerMethodArgumentResolver {
+public class UserArgumentResolver implements HandlerMethodArgumentResolver {
+    private static Logger log = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     SeckillUserService seckillUserService;

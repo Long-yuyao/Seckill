@@ -11,4 +11,5 @@ public class SeckillUserKey extends BasePrefix{
         super(prefix);
     }
     public static SeckillUserKey token = new SeckillUserKey(TOKEN_EXPIRE,"token");
+    public static SeckillUserKey GetById = new SeckillUserKey(0,"id");
 }

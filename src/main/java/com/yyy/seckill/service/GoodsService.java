@@ -1,6 +1,7 @@
 package com.yyy.seckill.service;
 
 import com.yyy.seckill.dao.GoodsDao;
+import com.yyy.seckill.pojo.miaosha_goods;
 import com.yyy.seckill.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,14 @@ public class GoodsService {
 
     public void reduceStock(GoodsVo goodsVo) {
         goodsDao.reduceStock(goodsVo.getId());
+    }
+
+    public void resetStock(List<GoodsVo> goodsList) {
+        for(GoodsVo goods : goodsList ) {
+            miaosha_goods g = new miaosha_goods();
+            g.setGoodsId(goods.getId());
+            g.setStockCount(goods.getStockCount());
+            goodsDao.resetStock(g);
+        }
     }
 }

@@ -1,4 +1,29 @@
 spring:
+  rabbitmq:
+    host: 192.168.56.10
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        #\u6D88\u8D39\u8005\u6570\u91CF
+        concurrency: 10
+        max-concurrency: 10
+        #\u6D88\u8D39\u8005\u6BCF\u6B21\u4ECE\u961F\u5217\u83B7\u53D6\u7684\u6D88\u606F\u6570\u91CF
+        prefetch: 1
+        #\u6D88\u8D39\u8005\u81EA\u52A8\u542F\u52A8
+        auto-startup: true
+        #\u6D88\u8D39\u5931\u8D25\uFF0C\u81EA\u52A8\u91CD\u65B0\u5165\u961F
+        default-requeue-rejected: true
+        #\u542F\u7528\u53D1\u9001\u91CD\u8BD5
+    template:
+      retry:
+        enabled: true
+        initial-interval: 1000
+        max-attempts: 3
+        max-interval: 10000
+        multiplier: 1.0
   thymeleaf:
     cache: false
   datasource:
@@ -36,5 +61,6 @@ redis:
   password: 123456
   poolMaxTotal: 1000
   poolMaxIdle: 500
+
 
 

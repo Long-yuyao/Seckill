@@ -42,7 +42,17 @@ public class SeckillUserService {
         return user;
     }
 
-    public seckill_user GetById(long id){return seckill_userDao.GetById(id);}
+    public seckill_user GetById(long id){
+        seckill_user user = redisService.Get(SeckillUserKey.GetById, "" + id, seckill_user.class);
+        if(user != null){
+            return user;
+        }
+        user = seckill_userDao.GetById(id);
+        if(user != null){
+            redisService.Set(SeckillUserKey.GetById, ""+id, user);
+        }
+        return user;
+    }
 
     public boolean login(HttpServletResponse response,LoginVo vo) {
         if(vo == null){

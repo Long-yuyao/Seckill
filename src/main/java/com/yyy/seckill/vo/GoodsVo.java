@@ -44,6 +44,6 @@ public class GoodsVo extends goods {
 
     @Override
     public String toString() {
-        return ""+miaosha_price.toString()+ super.getGoodsImg();
+        return ""+miaosha_price.toString()+ super.getGoodsImg()+super.getGoodsDetail()+super.getId()+super.getGoodsTitle()+super.getGoodsName()+super.getGoodsPrice()+super.getGoodsStock();
     }
 }
